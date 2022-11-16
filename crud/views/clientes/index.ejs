@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Clientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand"><b>Languages</b></a>
+          <form action="/api/languages/" class="d-flex" method="POST">
+            <input name="language" id="language" type="text" class="form-control me-2" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-info" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  
+    <a href="/api/languages/addLanguage" class="btn btn-success">New Language</a>
+
+    <div class="mt-5 table-responsive">
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">programmers</th>
+                    <th scope="col">edit</th>
+                    <th scope="col">delete</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <% resultado.forEach((language) => { %>
+                    <tr>
+                        <td><%= language.id %></td>
+                        <td><%= language.name %></td>
+                        <td><%= language.programmers %></td>
+                        <td><a href="/api/languages/editLanguage/<%= language.id %>" class= "btn btn-outline-info"><i class='bx bx-pencil'></i></a></td>
+                        <td><a href="/api/languages/deleteLanguage/<%= language.id %>" class= "btn btn-outline-info"><i class='bx bxs-trash' ></i></a></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>  
+    </div> 
+</body>
+</html>
